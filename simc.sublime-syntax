@@ -1,0 +1,25 @@
+%YAML 1.2
+---
+# See http://www.sublimetext.com/docs/3/syntax.html
+name: SimulationCraft
+file_extensions: simc
+scope: source.simc
+contexts:
+  main:
+    # Comments begin with a '#' and finish at the end of the line
+    - match: '#'
+      scope: punctuation.definition.comment.simc
+      push: line_comment
+
+    # Numbers
+    - match: '\b(-)?(\d*\.)?\d+\b'
+      scope: constant.numeric.simc
+
+    # Symbols
+    - match: '\||\&'
+      scope: keyword.operator.logical.simc
+
+  line_comment:
+    - meta_scope: comment.line.simc
+    - match: $
+      pop: true
