@@ -11,6 +11,10 @@ contexts:
       scope: punctuation.definition.comment.simc
       push: line_comment
 
+    - match: '\$'
+      scope: punctuation.definition.variable.simc
+      push: variable_def
+
     # Numbers
     - match: '\b(-)?(\d*\.)?\d+\b'
       scope: constant.numeric.simc
@@ -23,3 +27,11 @@ contexts:
     - meta_scope: comment.line.simc
     - match: $
       pop: true
+
+  variable_def:
+    - meta_scope: variable.parameter.simc
+    - match: '\)'
+      pop: true
+
+
+
